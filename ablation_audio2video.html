@@ -1,0 +1,359 @@
+<!DOCTYPE html>
+<html class=" w-mod-ix">
+
+<head>
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+    <style>
+        .wf-force-outline-none[tabindex="-1"]:focus {
+            outline: none;
+        }
+    </style>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/MathJax.js?config=TeX-MML-AM_CHTML"></script>
+
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-WNGS4SZ3C7"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag() { dataLayer.push(arguments); }
+        gtag('js', new Date());
+
+        gtag('config', 'G-WNGS4SZ3C7');
+    </script>
+
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
+    <title>Text-Guided Synthesis of Eulerian Cinemagraphs</title>
+    <link rel="stylesheet" href="images/bootstrap.min.css">
+    <link href="images/css.css" rel="stylesheet" type="text/css">
+    <link rel="stylesheet" href="images/Highlight-Clean.css">
+    <link rel="stylesheet" href="images/styles.css">
+
+    <link rel="manifest" href="images/site.webmanifest">
+
+    <meta property="og:site_name" content="Co-Speech-Gesture-3D">
+    <!-- <meta property="og:type" content="video.other"> -->
+    <meta property="og:title" content="Co-speech Gesture Video Generation with 3D Human Meshes">
+    <meta property="og:description" content="Co-speech Gesture Video Generation with 3D Human Meshes, 2024.">
+    <meta property="og:url" content="https://cospeech-gesture-3d.github.io/website/">
+
+    <meta name="description" content="Co-Speech-Gesture-3D">
+    <meta property="og:url" content="https://cospeech-gesture-3d.github.io/website/">
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="Co-speech Gesture Video Generation with 3D Human Meshes">
+    <meta property="og:description" content="Co-speech Gesture Video Generation with 3D Human Meshes, 2024.">
+
+    <!-- Twitter Meta Tags -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta property="twitter:url" content="https://cospeech-gesture-3d.github.io/website/">
+    <meta name="twitter:title" content="Co-speech Gesture Video Generation with 3D Human Meshes">
+    <meta name="twitter:description" content="Co-speech Gesture Video Generation with 3D Human Meshes, 2024.">
+
+
+    <script src="images/video_comparison.js"></script>
+    <script type="module" src="images/model-viewer.min.js"></script>
+
+
+</head>
+
+<body>
+
+
+    <!-- <div class="banner">
+      <video class="video lazy" poster="https://pub-b1f092b6867f4495b8f149d222a3bffe.r2.dev/sept28/banner_1x6_customhue_A.jpg" autoplay="autoplay" loop="" playsinline="" muted="muted">
+        <source data-src="https://pub-b1f092b6867f4495b8f149d222a3bffe.r2.dev/sept28/banner_1x6_customhue_A.mp4" type="video/mp4" src="images/banner_1x6_customhue_A.mp4">
+      </video>
+    </div> -->
+    <div class="highlight-clean" style="padding-bottom: 20px;">
+        <div class="container" style="padding-bottom: 10px; max-width: 1000px;">
+            <h1 class="text-center"><b>Co-speech Gesture Video Generation with 3D Human Meshes</b></h1>
+        </div>
+        <div class="container" style="max-width: 900px;">
+            <div class="row authors" style="padding-bottom: 25px; padding-left: 50px;">
+                <h5 class="text-center">
+                    <a class="text-center" href="">Aniruddha Mahapatra*</a>
+                    <sup style="padding-right: 25px;">1</sup>
+                </h5>
+                <h5 class="text-center">
+                    <a class="text-center" href="">Richa Mishra*</a>
+                    <sup style="padding-right: 25px;">1</sup>
+                </h5>
+                <h5 class="text-center">
+                    <a class="text-center" href="">Renda Li</a>
+                    <sup style="padding-right: 25px;">2,3</sup>
+                </h5>
+                <h5 class="text-center">
+                    <a class="text-center" href="">Ziyi Chen</a>
+                    <sup style="padding-right: 25px;">4</sup>
+                </h5>
+                <h5 class="text-center">
+                    <a class="text-center" href="">Boyang Ding</a>
+                    <sup style="padding-right: 25px;">2,3</sup>
+                </h5>
+                <h5 class="text-center">
+                    <a class="text-center" href="">Shoulei Wang</a>
+                    <sup style="padding-right: 25px;">2,3</sup>
+                </h5>
+                <h5 class="text-center">
+                    <a class="text-center" href="">Jun-Yan Zhu</a>
+                    <sup style="padding-right: 25px;">1</sup>
+                </h5>
+                <h5 class="text-center">
+                    <a class="text-center" href="">Peng Chang</a>
+                    <sup style="padding-right: 25px;">4</sup>
+                </h5>
+                <h5 class="text-center">
+                    <a class="text-center" href="">Mei Han</a>
+                    <sup style="padding-right: 25px;">4</sup>
+                </h5>
+                <h5 class="text-center">
+                    <a class="text-center" href="">Jing Xiao</a>
+                    <sup style="padding-right: 25px;">3</sup>
+                </h5>
+            </div>
+            
+            <!-- Affiliations Section -->
+            <div class="row authors institute">
+                <div class="col-sm-12">
+                    <h4 class="text-center">
+                        <sup>1</sup> Carnegie Mellon University &nbsp;&nbsp;
+                        <sup>2</sup> University of Science and Technology of China &nbsp;&nbsp;
+                        <br>
+                        <sup>3</sup> Ping An Technology &nbsp;&nbsp;
+                        <sup>4</sup> PAII Inc.
+                    </h4>
+                </div>
+            </div>
+            <div class="row authors institute">
+                <div class="col-sm-12">
+                    <h3 class="text-center"><strong>ECCV 2024</strong>
+                    </h3>
+                </div>
+            </div>
+        </div>
+        <div class="buttons" style="margin-bottom: 8px;">
+            <a class="btn btn-light" role="button" href="./index.html">
+                <svg style="width:24px;height:24px;margin-left:-12px;margin-right:12px" width="24px" height="24px"
+                    viewBox="0 0 375 531">
+                    <polygon stroke="#000000" points="459.5,0.866 0.5,265.87 459.5,530.874 " />
+                </svg>
+                Back
+            </a>
+        </div>
+    </div>
+
+
+    <hr style="max-width: 1400px;">
+    <div class="container" style="max-width: 1400px;">
+        <div class="row">
+            <div class="col-md-12">
+                <h2 class="text-center" style="margin-bottom: 30px; margin-top: 10px;">Ablation Study (Audio to Video)</h2>
+                <p style="margin-bottom: 30px; margin-bottom: 30px;">
+                    Given an audio input, we study the role of (1) depth and normal maps and (2) textured meshes for generating videos. 
+                    We compare our full method that uses depth, normal maps and textured rendering of the meshes as input to generate video, 
+                    to (1) Ours (w/o depth and normal maps) which does not use additonal depth and normal map conditioning as input, and 
+                    (2) Ours (w/o textured mesh), which only uses rendering of untextured meshes as input . Please play the audio in each 
+                    of the video to listen to the input speech.
+                </p>
+                <p></p>
+                <p></p>
+                <table width="1200" style="width: 1000px; margin: auto;">
+                    <tbody>
+                        <!-- <th>A</th>
+                            <th>B</th>
+                            <th>C</th> -->
+                        <tr>
+        
+        
+                            <th style="text-align: center; padding: 10px;">
+                                <!-- <div class="row justify-content-sm-center">
+                                            <p style="font-family: Chalkduster; font-size: 16px; margin-top: 5px; padding-left: 50px">Input Mesh</p>
+                                            <p style="font-family: Chalkduster; font-size: 16px; margin-top: 5px; padding-left: 120px">Textured Mesh</p>
+                                            <p style="font-family: Chalkduster; font-size: 16px; margin-top: 5px; padding-left: 120px">Generated Video</p>
+                                            <p style="font-family: Chalkduster; font-size: 16px; margin-top: 5px; padding-left: 100px">Ground Truth Video</p>
+                                        </div> -->
+                                <div style="width: 1000px; margin: auto; border-bottom: 0.5px solid #000;">
+                                    <div class="row justify-content-sm-center"
+                                        style="display: flex; width: 1000px; height: 40px; margin-left: 0px">
+                                        <div style="flex: 0 0 25%; text-align: center;">
+                                            <p style="font-family: Chalkduster; font-size: 16px; margin: 0;">Input Mesh</p>
+                                        </div>
+                                        <div style="flex: 0 0 25%; text-align: center;">
+                                            <p style="font-family: Chalkduster; font-size: 16px; margin: 0;">Ours <br> (w/o
+                                                Depth + Normal)</p>
+                                        </div>
+                                        <div style="flex: 0 0 25%; text-align: center;">
+                                            <p style="font-family: Chalkduster; font-size: 16px; margin: 0;">Ours <br> (w/o
+                                                Textured Mesh) </p>
+                                        </div>
+                                        <div style="flex: 0 0 25%; text-align: center;">
+                                            <p style="font-family: Chalkduster; font-size: 16px; margin: 0;">Ours</p>
+                                        </div>
+                                    </div>
+                                    <video autoplay="autoplay" controls="controls" loop="loop" muted="muted"
+                                        src="./all_results/our_ablations_audio/oliver.mp4"
+                                        style="width:1000px; border: 0px solid #000;" type="video/mp4"></video>
+                                    <p style="font-family: Chalkduster; font-size: 20px; margin-top: 5px; margin-bottom: 20px;">Oliver</p>
+                                </div>
+                            </th>
+                        </tr>
+        
+                        <tr>
+                            <td><br></td>
+                        </tr>
+        
+                        <th style="text-align: center; padding: 10px;">
+                            <!-- <div class="row justify-content-sm-center">
+                                            <p style="font-family: Chalkduster; font-size: 16px; margin-top: 5px; padding-left: 50px">Input Mesh</p>
+                                            <p style="font-family: Chalkduster; font-size: 16px; margin-top: 5px; padding-left: 120px">Textured Mesh</p>
+                                            <p style="font-family: Chalkduster; font-size: 16px; margin-top: 5px; padding-left: 120px">Generated Video</p>
+                                            <p style="font-family: Chalkduster; font-size: 16px; margin-top: 5px; padding-left: 100px">Ground Truth Video</p>
+                                        </div> -->
+                            <div style="width: 1000px; margin: auto; border-bottom: 0.5px solid #000;">
+                                <div class="row justify-content-sm-center"
+                                    style="display: flex; width: 1000px; height: 40px; margin-left: 0px">
+                                    <div style="flex: 0 0 25%; text-align: center;">
+                                        <p style="font-family: Chalkduster; font-size: 16px; margin: 0;">Input Mesh</p>
+                                    </div>
+                                    <div style="flex: 0 0 25%; text-align: center;">
+                                        <p style="font-family: Chalkduster; font-size: 16px; margin: 0;">Ours <br> (w/o
+                                            Depth + Normal)</p>
+                                    </div>
+                                    <div style="flex: 0 0 25%; text-align: center;">
+                                        <p style="font-family: Chalkduster; font-size: 16px; margin: 0;">Ours <br> (w/o
+                                            Textured Mesh) </p>
+                                    </div>
+                                    <div style="flex: 0 0 25%; text-align: center;">
+                                        <p style="font-family: Chalkduster; font-size: 16px; margin: 0;">Ours</p>
+                                    </div>
+                                </div>
+                                <video autoplay="autoplay" controls="controls" loop="loop" muted="muted"
+                                    src="./all_results/our_ablations_audio/conan.mp4"
+                                    style="width:1000px; border: 0px solid #000;" type="video/mp4"></video>
+                                <p style="font-family: Chalkduster; font-size: 20px; margin-top: 5px; margin-bottom: 20px;">Conan</p>
+                            </div>
+                        </th>
+                        </tr>
+        
+        
+                        <tr>
+                            <td><br></td>
+                        </tr>
+        
+                        <th style="text-align: center; padding: 10px;">
+                            <!-- <div class="row justify-content-sm-center">
+                                        <p style="font-family: Chalkduster; font-size: 16px; margin-top: 5px; padding-left: 50px">Input Mesh</p>
+                                        <p style="font-family: Chalkduster; font-size: 16px; margin-top: 5px; padding-left: 120px">Textured Mesh</p>
+                                        <p style="font-family: Chalkduster; font-size: 16px; margin-top: 5px; padding-left: 120px">Generated Video</p>
+                                        <p style="font-family: Chalkduster; font-size: 16px; margin-top: 5px; padding-left: 100px">Ground Truth Video</p>
+                                    </div> -->
+                            <div style="width: 1000px; margin: auto; border-bottom: 0.5px solid #000;">
+                                <div class="row justify-content-sm-center"
+                                    style="display: flex; width: 1000px; height: 40px; margin-left: 0px">
+                                    <div style="flex: 0 0 25%; text-align: center;">
+                                        <p style="font-family: Chalkduster; font-size: 16px; margin: 0;">Input Mesh</p>
+                                    </div>
+                                    <div style="flex: 0 0 25%; text-align: center;">
+                                        <p style="font-family: Chalkduster; font-size: 16px; margin: 0;">Ours <br> (w/o
+                                            Depth + Normal)</p>
+                                    </div>
+                                    <div style="flex: 0 0 25%; text-align: center;">
+                                        <p style="font-family: Chalkduster; font-size: 16px; margin: 0;">Ours <br> (w/o
+                                            Textured Mesh) </p>
+                                    </div>
+                                    <div style="flex: 0 0 25%; text-align: center;">
+                                        <p style="font-family: Chalkduster; font-size: 16px; margin: 0;">Ours</p>
+                                    </div>
+                                </div>
+                                <video autoplay="autoplay" controls="controls" loop="loop" muted="muted"
+                                    src="./all_results/our_ablations_audio/seth.mp4" style="width:1000px; border: 0px solid #000;"
+                                    type="video/mp4"></video>
+                                <p style="font-family: Chalkduster; font-size: 20px; margin-top: 5px; margin-bottom: 20px;">Seth*</p>
+                            </div>
+                        </th>
+                        </tr>
+        
+        
+                        <tr>
+                            <td><br></td>
+                        </tr>
+        
+                        <th style="text-align: center; padding: 10px;">
+                            <!-- <div class="row justify-content-sm-center">
+                                    <p style="font-family: Chalkduster; font-size: 16px; margin-top: 5px; padding-left: 50px">Input Mesh</p>
+                                    <p style="font-family: Chalkduster; font-size: 16px; margin-top: 5px; padding-left: 120px">Textured Mesh</p>
+                                    <p style="font-family: Chalkduster; font-size: 16px; margin-top: 5px; padding-left: 120px">Generated Video</p>
+                                    <p style="font-family: Chalkduster; font-size: 16px; margin-top: 5px; padding-left: 100px">Ground Truth Video</p>
+                                </div> -->
+                            <div style="width: 1000px; margin: auto; border-bottom: 0.5px solid #000;">
+                                <div class="row justify-content-sm-center"
+                                    style="display: flex; width: 1000px; height: 40px; margin-left: 0px">
+                                    <div style="flex: 0 0 25%; text-align: center;">
+                                        <p style="font-family: Chalkduster; font-size: 16px; margin: 0;">Input Mesh</p>
+                                    </div>
+                                    <div style="flex: 0 0 25%; text-align: center;">
+                                        <p style="font-family: Chalkduster; font-size: 16px; margin: 0;">Ours <br> (w/o
+                                            Depth + Normal)</p>
+                                    </div>
+                                    <div style="flex: 0 0 25%; text-align: center;">
+                                        <p style="font-family: Chalkduster; font-size: 16px; margin: 0;">Ours <br> (w/o
+                                            Textured Mesh) </p>
+                                    </div>
+                                    <div style="flex: 0 0 25%; text-align: center;">
+                                        <p style="font-family: Chalkduster; font-size: 16px; margin: 0;">Ours</p>
+                                    </div>
+                                </div>
+                                <video autoplay="autoplay" controls="controls" loop="loop" muted="muted"
+                                    src="./all_results/our_ablations_audio/chemistry.mp4"
+                                    style="width:1000px; border: 0px solid #000;" type="video/mp4"></video>
+                                <p style="font-family: Chalkduster; font-size: 20px; margin-top: 5px; margin-bottom: 20px;">Chemistry*</p>
+                            </div>
+                        </th>
+                        </tr>
+        
+        
+                        <tr>
+                            <td><br></td>
+                        </tr>
+        
+        
+                    </tbody>
+                </table>
+                <!------------------ END SECTION ------------------>
+                <p><strong>*</strong> The hands of "Seth" and "Chemistry" in the generated video from audio input contain cloudy
+                    artifacts because (1) the number of training frames for these examples is extremely small (< 7K frames), (2)
+                        The SMPL-X mesh sequence generated from audio at inference can be different compared to training mesh
+                        distribution. We observe that we need more than 25K frames for training the GAN model to make it robust
+                        to out of domain mesh sequence at inference (as in case of "Oliver" ).</p>
+                <p></p>
+                <p></p>
+
+            </div>
+        </div>
+    </div>
+
+
+
+
+
+
+    <script src="images/polyfill.js"></script>
+    <script src="images/yall.js"></script>
+    <script>
+        yall(
+            {
+                observeChanges: true
+            }
+        );
+    </script>
+    <script src="images/scripts.js"></script>
+    <script src="images/jquery.min.js"></script>
+    <script src="images/bootstrap.bundle.min.js"></script>
+    <script src="images/webflow.fd002feec.js"></script>
+
+    <!-- Import the component -->
+
+
+
+</body>
+
+</html>
